@@ -1,0 +1,7 @@
+# dsh-deepseek-balance 配置层（bundle patch）
+# 将该插件挂载到 profile 的配置树：宿主端（lib/index.js）注册 /dsh-balance RPC 通道，
+# 浏览器端（lib/client.js，通过 dsh.client 声明自动加载）把余额控件注册进
+# sidebar.footer.action 插槽（侧栏底部“设置”按钮上方）。
+- insert:
+    - id: dsh-balance
+      name: dsh-deepseek-balance
