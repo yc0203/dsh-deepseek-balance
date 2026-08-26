@@ -11,8 +11,15 @@
     "余额"
   ],
   "author": {
-    "name": "yc0203"
+    "name": "yc0203",
+    "url": "https://github.com/yc0203"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yc0203/dsh-deepseek-balance.git"
+  },
+  "homepage": "https://github.com/yc0203/dsh-deepseek-balance#readme",
+  "bugs": "https://github.com/yc0203/dsh-deepseek-balance/issues",
   "license": "MIT",
   "type": "module",
   "main": "./lib/index.js",
