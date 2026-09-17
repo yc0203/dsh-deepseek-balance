@@ -1,6 +1,6 @@
 {
   "name": "dsh-deepseek-balance",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "DeepSeek Harness 侧栏余额插件：在左下角设置按钮上方实时显示 DeepSeek API 余额，每 5 秒自动刷新，并带手动刷新按钮。DeepSeek balance widget for DSH: shows your DeepSeek API balance right above the Settings button, auto-refreshing every 5 seconds with a manual refresh button.",
   "keywords": [
     "deepseek-harness",

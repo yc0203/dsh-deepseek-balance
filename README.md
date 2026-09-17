@@ -49,12 +49,13 @@ dsh plugin --profile web add https://github.com/<你的账号>/dsh-deepseek-bala
 
 | 层 | 文件 | 说明 |
 | --- | --- | --- |
-| 宿主端 | `lib/index.js` | cordis 插件：注册 `/dsh-balance` RPC 通道（loopback 信任），解析 API Key 后请求 `GET {baseUrl}/user/balance`，规整成 JSON 返回 |
+| 宿主端 | `lib/index.js` | cordis 插件：监听 `webServer` 后注册 `POST /dsh-balance/get` 路由（仅环回地址可访问），解析 API Key 后请求 `GET {baseUrl}/user/balance`，规整成 JSON 返回 |
 | 浏览器端 | `lib/client.js` | 经 `dsh.client` 声明自动加载的客户端插件：把 `BalanceWidget` 注册进 `sidebar.footer.action` 插槽，5 秒轮询 + 手动刷新 |
 | 配置层 | `cordis.patch.yml` | bundle patch，把插件挂进 profile 配置树 |
 
-浏览器端通过宿主 Connection RPC（`POST /dsh-balance/get`）取数——同样的通道机制
-dsh-im 等插件也在用；`/dsh-balance` 是独立逻辑通道，不占用保留的 `/api`。
+浏览器端通过 Connection RPC 调用同源路由 `POST /dsh-balance/get` 取数；该路由由宿主端用
+`webServer.register()` 直接挂载（与 dsh-pilot、dsh-email 等插件同一挂法），只服务环回地址，
+不经 `connection.rpc.handle()`——当前 dsh 版本下后者会因 `owner.webServer` 解析失败而永远注册不上。
 
 ## 开发
 
